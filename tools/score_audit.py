@@ -60,6 +60,18 @@ QUESTION_SETS: dict[str, list[Question]] = {
         Question("shadow_incident_monitoring", "Monitoring incidents IA en place", "yes"),
         Question("shadow_remediation_plan", "Plan de remediation formel", "yes"),
     ],
+    "nis2": [
+        Question("nis2_governance_owner", "Responsable gouvernance cyber designe", "yes"),
+        Question("nis2_risk_management_policy", "Politique de gestion des risques formalisee", "yes"),
+        Question("nis2_incident_response_plan", "Plan de reponse a incident teste", "yes"),
+        Question("nis2_supply_chain_controls", "Controles cyber sur la chaine fournisseurs", "yes"),
+        Question("nis2_business_continuity", "Plan de continuite et reprise d'activite", "yes"),
+        Question("nis2_security_training", "Programme de sensibilisation cyber actif", "yes"),
+        Question("nis2_vulnerability_management", "Gestion des vulnerabilites outillee", "yes"),
+        Question("nis2_mfa_for_critical_access", "MFA active sur acces critiques", "yes"),
+        Question("nis2_encryption_policy", "Politique de chiffrement appliquee", "yes"),
+        Question("nis2_report_24h_readiness", "Capacite de notification incident <24h", "yes"),
+    ],
 }
 
 
@@ -180,7 +192,7 @@ def _write_markdown(path: Path, summary: dict[str, object]) -> None:
         "|---|---:|---|",
     ]
 
-    for name in ("rgpd", "cloud_act", "shadow_ai"):
+    for name in QUESTION_SETS:
         info = sections[name]
         lines.append(f"| {name} | {info['score']:.1f}/100 | {info['risk_level']} |")
 
@@ -222,7 +234,7 @@ def _write_html(path: Path, summary: dict[str, object]) -> None:
     priorities = summary["priorities"]
 
     section_rows: list[str] = []
-    for name in ("rgpd", "cloud_act", "shadow_ai"):
+    for name in QUESTION_SETS:
         info = sections[name]
         section_rows.append(
             "<tr>"

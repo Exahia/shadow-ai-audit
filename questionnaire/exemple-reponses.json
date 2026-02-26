@@ -34,5 +34,17 @@
     "shadow_unknown_data_exposure": "yes",
     "shadow_incident_monitoring": "no",
     "shadow_remediation_plan": "partial"
+  },
+  "nis2": {
+    "nis2_governance_owner": "partial",
+    "nis2_risk_management_policy": "partial",
+    "nis2_incident_response_plan": "no",
+    "nis2_supply_chain_controls": "no",
+    "nis2_business_continuity": "partial",
+    "nis2_security_training": "partial",
+    "nis2_vulnerability_management": "partial",
+    "nis2_mfa_for_critical_access": "yes",
+    "nis2_encryption_policy": "yes",
+    "nis2_report_24h_readiness": "no"
   }
 }

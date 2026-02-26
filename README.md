@@ -60,7 +60,8 @@ shadow-ai-audit/
 ├── checklist/
 │   ├── RGPD.md              # Checklist conformité RGPD × IA
 │   ├── CLOUD-ACT.md         # Évaluation exposition Cloud Act
-│   └── SHADOW-AI.md         # Détection Shadow AI (signaux, méthodes)
+│   ├── SHADOW-AI.md         # Détection Shadow AI (signaux, méthodes)
+│   └── NIS2.md              # Préparation NIS2 pour usages IA
 ├── questionnaire/
 │   ├── questionnaire-dsi.md # Questionnaire pour DSI/RSSI
 │   └── exemple-reponses.json
@@ -103,7 +104,7 @@ python3 tools/score_audit.py \
 
 Le script calcule:
 - un score global de risque (`0-100`)
-- un score par domaine (`rgpd`, `cloud_act`, `shadow_ai`)
+- un score par domaine (`rgpd`, `cloud_act`, `shadow_ai`, `nis2`)
 - une liste de priorités de remédiation
 - un export HTML autonome lisible dans n'importe quel navigateur (`--output-html`)
 
@@ -114,6 +115,7 @@ Le script calcule:
 | [RGPD × IA](checklist/RGPD.md) | DPO, Juridique | 15 points de contrôle |
 | [Cloud Act](checklist/CLOUD-ACT.md) | RSSI, DSI | 10 points de contrôle |
 | [Shadow AI](checklist/SHADOW-AI.md) | DSI, RSSI, DPO | 12 signaux d'alerte |
+| [NIS2 × IA](checklist/NIS2.md) | RSSI, Direction, DSI | 15 points de contrôle |
 
 ## Pour qui ?
 
