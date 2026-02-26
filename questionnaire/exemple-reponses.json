@@ -1,0 +1,38 @@
+{
+  "rgpd": {
+    "rgpd_finalite_documentee": "yes",
+    "rgpd_base_legale": "partial",
+    "rgpd_dpa_fournisseurs": "no",
+    "rgpd_transferts_hors_ue": "partial",
+    "rgpd_droits_personnes": "partial",
+    "rgpd_chiffrement": "yes",
+    "rgpd_retention": "partial",
+    "rgpd_detection_pii": "no",
+    "rgpd_dpia": "no",
+    "rgpd_registre_traitements": "partial"
+  },
+  "cloud_act": {
+    "cloud_openai_usage": "yes",
+    "cloud_azure_usage": "partial",
+    "cloud_google_usage": "no",
+    "cloud_aws_usage": "no",
+    "cloud_infra_us": "partial",
+    "cloud_provider_us_links": "yes",
+    "cloud_sovereign_provider": "partial",
+    "cloud_pii_sent_to_us": "yes",
+    "cloud_sensitive_data_sent": "partial",
+    "cloud_end_to_end_encryption": "no"
+  },
+  "shadow_ai": {
+    "shadow_traffic_known_ai_domains": "yes",
+    "shadow_api_calls_external_ai": "yes",
+    "shadow_copy_paste_behavior": "partial",
+    "shadow_personal_ai_subscriptions": "partial",
+    "shadow_no_official_policy": "yes",
+    "shadow_no_official_tooling": "yes",
+    "shadow_informal_training": "partial",
+    "shadow_unknown_data_exposure": "yes",
+    "shadow_incident_monitoring": "no",
+    "shadow_remediation_plan": "partial"
+  }
+}

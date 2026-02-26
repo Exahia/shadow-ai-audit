@@ -33,6 +33,17 @@ Ouvrez une issue sur GitHub avec :
 - Langage professionnel, adapté DSI/RSSI/DPO
 - Pas de contenu promotionnel abusif
 
+## Validation locale
+
+Pour valider les changements sur l'outil de scoring :
+
+```bash
+python3 tools/score_audit.py \
+  --responses questionnaire/exemple-reponses.json \
+  --output-json /tmp/score-summary.json \
+  --output-md /tmp/score-summary.md
+```
+
 ## Contact
 
 Pour toute question : [hello@exahia.com](mailto:hello@exahia.com) ou via une issue GitHub.

@@ -62,10 +62,47 @@ shadow-ai-audit/
 │   ├── CLOUD-ACT.md         # Évaluation exposition Cloud Act
 │   └── SHADOW-AI.md         # Détection Shadow AI (signaux, méthodes)
 ├── questionnaire/
-│   └── questionnaire-dsi.md # Questionnaire pour DSI/RSSI
+│   ├── questionnaire-dsi.md # Questionnaire pour DSI/RSSI
+│   └── exemple-reponses.json
+├── tools/
+│   └── score_audit.py       # CLI de scoring (JSON -> score + rapport)
 └── rapport/
     └── template-rapport.md  # Template de rapport d'audit
 ```
+
+## Quick Start (scoring automatique)
+
+### 1) Générer un template de réponses
+
+```bash
+python3 tools/score_audit.py --init-template
+```
+
+Cela crée `questionnaire/reponses-template.json`.
+
+### 2) Remplir le fichier de réponses
+
+Valeurs attendues pour chaque question:
+- `yes`
+- `partial`
+- `no`
+- `na`
+
+Vous pouvez partir de `questionnaire/exemple-reponses.json`.
+
+### 3) Calculer le score de risque
+
+```bash
+python3 tools/score_audit.py \
+  --responses questionnaire/exemple-reponses.json \
+  --output-json rapport/score-summary.json \
+  --output-md rapport/score-summary.md
+```
+
+Le script calcule:
+- un score global de risque (`0-100`)
+- un score par domaine (`rgpd`, `cloud_act`, `shadow_ai`)
+- une liste de priorités de remédiation
 
 ## Checklists Disponibles
 
