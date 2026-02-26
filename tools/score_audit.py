@@ -6,6 +6,7 @@ import argparse
 from dataclasses import dataclass
 from datetime import datetime, timezone
 import json
+from html import escape
 from pathlib import Path
 from typing import Literal
 
@@ -215,6 +216,100 @@ def _write_markdown(path: Path, summary: dict[str, object]) -> None:
     path.write_text("\n".join(lines), encoding="utf-8")
 
 
+def _write_html(path: Path, summary: dict[str, object]) -> None:
+    overall = summary["overall"]
+    sections = summary["sections"]
+    priorities = summary["priorities"]
+
+    section_rows: list[str] = []
+    for name in ("rgpd", "cloud_act", "shadow_ai"):
+        info = sections[name]
+        section_rows.append(
+            "<tr>"
+            f"<td>{escape(name)}</td>"
+            f"<td>{info['score']:.1f}/100</td>"
+            f"<td>{escape(str(info['risk_level']))}</td>"
+            "</tr>"
+        )
+
+    priority_rows: list[str] = []
+    if priorities:
+        for item in priorities:
+            priority_rows.append(
+                "<tr>"
+                f"<td>{escape(str(item['section']))}</td>"
+                f"<td>{escape(str(item['label']))}</td>"
+                f"<td>{escape(str(item['answer']))}</td>"
+                "</tr>"
+            )
+    else:
+        priority_rows.append(
+            "<tr><td>-</td><td>Aucune priorite critique detectee</td><td>-</td></tr>"
+        )
+
+    html = f"""<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rapport de score Shadow AI</title>
+  <style>
+    body {{ font-family: Arial, sans-serif; margin: 2rem auto; max-width: 920px; line-height: 1.4; color: #1f2937; }}
+    h1, h2 {{ color: #111827; }}
+    table {{ width: 100%; border-collapse: collapse; margin: 1rem 0 2rem; }}
+    th, td {{ border: 1px solid #d1d5db; padding: 0.5rem; text-align: left; }}
+    th {{ background: #f3f4f6; }}
+    .meta {{ margin: 0 0 1rem; color: #374151; }}
+    ul {{ padding-left: 1.2rem; }}
+  </style>
+</head>
+<body>
+  <h1>Rapport de score Shadow AI</h1>
+  <p class="meta">Genere le: {escape(str(summary['generated_at']))}</p>
+
+  <h2>Score global</h2>
+  <table>
+    <thead>
+      <tr><th>Score</th><th>Niveau de risque</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>{overall['score']:.1f}/100</td><td>{escape(str(overall['risk_level']))}</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Scores par section</h2>
+  <table>
+    <thead>
+      <tr><th>Section</th><th>Score</th><th>Niveau</th></tr>
+    </thead>
+    <tbody>
+      {''.join(section_rows)}
+    </tbody>
+  </table>
+
+  <h2>Priorites de remediation</h2>
+  <table>
+    <thead>
+      <tr><th>Section</th><th>Question</th><th>Reponse</th></tr>
+    </thead>
+    <tbody>
+      {''.join(priority_rows)}
+    </tbody>
+  </table>
+
+  <h2>Legend</h2>
+  <ul>
+    <li><code>0-24.9</code>: risque faible</li>
+    <li><code>25-49.9</code>: risque modere</li>
+    <li><code>50-74.9</code>: risque eleve</li>
+    <li><code>75-100</code>: risque critique</li>
+  </ul>
+</body>
+</html>
+"""
+    path.write_text(html, encoding="utf-8")
+
+
 def _write_template(path: Path) -> None:
     template: dict[str, dict[str, str]] = {}
     for section, questions in QUESTION_SETS.items():
@@ -236,6 +331,11 @@ def _build_parser() -> argparse.ArgumentParser:
         "--output-md",
         default="rapport/score-summary.md",
         help="Output Markdown report path.",
+    )
+    parser.add_argument(
+        "--output-html",
+        default=None,
+        help="Optional output HTML report path.",
     )
     parser.add_argument(
         "--init-template",
@@ -286,9 +386,17 @@ def main() -> int:
     output_json.write_text(json.dumps(summary, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     _write_markdown(output_md, summary)
 
+    output_html: Path | None = None
+    if args.output_html:
+        output_html = Path(args.output_html)
+        output_html.parent.mkdir(parents=True, exist_ok=True)
+        _write_html(output_html, summary)
+
     print(f"Global score: {summary['overall']['score']:.1f}/100 ({summary['overall']['risk_level']})")
     print(f"JSON report : {output_json}")
     print(f"MD report   : {output_md}")
+    if output_html:
+        print(f"HTML report : {output_html}")
     return 0
 
 

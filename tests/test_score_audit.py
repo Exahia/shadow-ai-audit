@@ -32,6 +32,26 @@ class ScoreAuditTests(unittest.TestCase):
             answers[section] = section_answers
         summary = sa._compute(answers)
         self.assertLess(summary["overall"]["score"], 5.0)
+        
+    def test_html_report_generation(self) -> None:
+        answers = {}
+        for section, questions in sa.QUESTION_SETS.items():
+            section_answers = {}
+            for question in questions:
+                section_answers[question.id] = "partial"
+            answers[section] = section_answers
+
+        summary = sa._compute(answers)
+        with tempfile.TemporaryDirectory() as tmp:
+            target = Path(tmp) / "score-summary.html"
+            sa._write_html(target, summary)
+            content = target.read_text(encoding="utf-8")
+
+        self.assertIn("<html", content)
+        self.assertIn("Score global", content)
+        self.assertIn("Scores par section", content)
+        self.assertIn("Priorites de remediation", content)
+
 
 
 if __name__ == "__main__":

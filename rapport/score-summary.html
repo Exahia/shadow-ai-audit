@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rapport de score Shadow AI</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem auto; max-width: 920px; line-height: 1.4; color: #1f2937; }
+    h1, h2 { color: #111827; }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0 2rem; }
+    th, td { border: 1px solid #d1d5db; padding: 0.5rem; text-align: left; }
+    th { background: #f3f4f6; }
+    .meta { margin: 0 0 1rem; color: #374151; }
+    ul { padding-left: 1.2rem; }
+  </style>
+</head>
+<body>
+  <h1>Rapport de score Shadow AI</h1>
+  <p class="meta">Genere le: 2026-02-26T22:20:12.892803+00:00</p>
+
+  <h2>Score global</h2>
+  <table>
+    <thead>
+      <tr><th>Score</th><th>Niveau de risque</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>65.0/100</td><td>eleve</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Scores par section</h2>
+  <table>
+    <thead>
+      <tr><th>Section</th><th>Score</th><th>Niveau</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>rgpd</td><td>55.0/100</td><td>eleve</td></tr><tr><td>cloud_act</td><td>60.0/100</td><td>eleve</td></tr><tr><td>shadow_ai</td><td>80.0/100</td><td>critique</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Priorites de remediation</h2>
+  <table>
+    <thead>
+      <tr><th>Section</th><th>Question</th><th>Reponse</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>rgpd</td><td>DPA en place</td><td>no</td></tr><tr><td>rgpd</td><td>Detection PII avant envoi LLM</td><td>no</td></tr><tr><td>rgpd</td><td>DPIA realise</td><td>no</td></tr><tr><td>cloud_act</td><td>Usage OpenAI/ChatGPT</td><td>yes</td></tr><tr><td>cloud_act</td><td>Fournisseur avec lien juridique US</td><td>yes</td></tr><tr><td>cloud_act</td><td>PII envoyee a des services US</td><td>yes</td></tr><tr><td>cloud_act</td><td>Chiffrement E2E avec cles client</td><td>no</td></tr><tr><td>shadow_ai</td><td>Trafic vers domaines IA publics</td><td>yes</td></tr><tr><td>shadow_ai</td><td>Appels API externes IA</td><td>yes</td></tr><tr><td>shadow_ai</td><td>Absence de politique IA</td><td>yes</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Legend</h2>
+  <ul>
+    <li><code>0-24.9</code>: risque faible</li>
+    <li><code>25-49.9</code>: risque modere</li>
+    <li><code>50-74.9</code>: risque eleve</li>
+    <li><code>75-100</code>: risque critique</li>
+  </ul>
+</body>
+</html>
