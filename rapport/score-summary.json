@@ -1,0 +1,99 @@
+{
+  "generated_at": "2026-02-26T22:20:12.892803+00:00",
+  "overall": {
+    "score": 65.0,
+    "risk_level": "eleve"
+  },
+  "sections": {
+    "rgpd": {
+      "score": 55.00000000000001,
+      "risk_level": "eleve",
+      "answered_weight": 10.0,
+      "missing_questions": []
+    },
+    "cloud_act": {
+      "score": 60.0,
+      "risk_level": "eleve",
+      "answered_weight": 10.0,
+      "missing_questions": []
+    },
+    "shadow_ai": {
+      "score": 80.0,
+      "risk_level": "critique",
+      "answered_weight": 10.0,
+      "missing_questions": []
+    }
+  },
+  "priorities": [
+    {
+      "section": "rgpd",
+      "question_id": "rgpd_dpa_fournisseurs",
+      "label": "DPA en place",
+      "answer": "no",
+      "risk_points": 1.0
+    },
+    {
+      "section": "rgpd",
+      "question_id": "rgpd_detection_pii",
+      "label": "Detection PII avant envoi LLM",
+      "answer": "no",
+      "risk_points": 1.0
+    },
+    {
+      "section": "rgpd",
+      "question_id": "rgpd_dpia",
+      "label": "DPIA realise",
+      "answer": "no",
+      "risk_points": 1.0
+    },
+    {
+      "section": "cloud_act",
+      "question_id": "cloud_openai_usage",
+      "label": "Usage OpenAI/ChatGPT",
+      "answer": "yes",
+      "risk_points": 1.0
+    },
+    {
+      "section": "cloud_act",
+      "question_id": "cloud_provider_us_links",
+      "label": "Fournisseur avec lien juridique US",
+      "answer": "yes",
+      "risk_points": 1.0
+    },
+    {
+      "section": "cloud_act",
+      "question_id": "cloud_pii_sent_to_us",
+      "label": "PII envoyee a des services US",
+      "answer": "yes",
+      "risk_points": 1.0
+    },
+    {
+      "section": "cloud_act",
+      "question_id": "cloud_end_to_end_encryption",
+      "label": "Chiffrement E2E avec cles client",
+      "answer": "no",
+      "risk_points": 1.0
+    },
+    {
+      "section": "shadow_ai",
+      "question_id": "shadow_traffic_known_ai_domains",
+      "label": "Trafic vers domaines IA publics",
+      "answer": "yes",
+      "risk_points": 1.0
+    },
+    {
+      "section": "shadow_ai",
+      "question_id": "shadow_api_calls_external_ai",
+      "label": "Appels API externes IA",
+      "answer": "yes",
+      "risk_points": 1.0
+    },
+    {
+      "section": "shadow_ai",
+      "question_id": "shadow_no_official_policy",
+      "label": "Absence de politique IA",
+      "answer": "yes",
+      "risk_points": 1.0
+    }
+  ]
+}

@@ -96,13 +96,16 @@ Vous pouvez partir de `questionnaire/exemple-reponses.json`.
 python3 tools/score_audit.py \
   --responses questionnaire/exemple-reponses.json \
   --output-json rapport/score-summary.json \
-  --output-md rapport/score-summary.md
+  --output-md rapport/score-summary.md \
+  --output-html rapport/score-summary.html
+
 ```
 
 Le script calcule:
 - un score global de risque (`0-100`)
 - un score par domaine (`rgpd`, `cloud_act`, `shadow_ai`)
 - une liste de priorités de remédiation
+- un export HTML autonome lisible dans n'importe quel navigateur (`--output-html`)
 
 ## Checklists Disponibles
 
