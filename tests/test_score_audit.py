@@ -54,6 +54,18 @@ class ScoreAuditTests(unittest.TestCase):
         self.assertIn("Priorites de remediation", content)
         self.assertIn("nis2", content)
 
+    def test_compute_respects_top_priorities_limit(self) -> None:
+        answers = {}
+        for section, questions in sa.QUESTION_SETS.items():
+            section_answers = {}
+            for question in questions:
+                # Force maximum risk answers to fill priorities list.
+                section_answers[question.id] = "no" if question.good_when == "yes" else "yes"
+            answers[section] = section_answers
+
+        summary = sa._compute(answers, max_priorities=3)
+        self.assertEqual(3, len(summary["priorities"]))
+
 
 if __name__ == "__main__":
     unittest.main()

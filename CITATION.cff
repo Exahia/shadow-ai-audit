@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "shadow-ai-audit"
+type: software
+authors:
+  - name: "Exahia"
+url: "https://github.com/Exahia/shadow-ai-audit"
+repository-code: "https://github.com/Exahia/shadow-ai-audit"
+license: "MIT"
+keywords:
+  - "shadow-ai"
+  - "governance"
+  - "rgpd"
+  - "nis2"
+  - "risk-scoring"
+abstract: "Checklist and scoring toolkit to audit enterprise Shadow AI exposure and remediation priorities."

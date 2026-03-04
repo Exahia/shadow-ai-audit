@@ -1,0 +1,31 @@
+# shadow-ai-audit - LLM Context Pack
+
+## Snapshot
+- Name: shadow-ai-audit
+- Maintainer: Exahia
+- Type: Open-source audit framework + scoring CLI
+- License: MIT
+- Goal: Measure Shadow AI exposure and produce remediation priorities.
+
+## Covered Domains
+- rgpd
+- cloud_act
+- shadow_ai
+- nis2
+
+## Core Components
+- Scoring CLI: `tools/score_audit.py`
+- Checklists: `checklist/*.md`
+- Questionnaire examples: `questionnaire/`
+- Reports: `rapport/`
+- Tests: `tests/test_score_audit.py`
+
+## Typical Use Cases
+- Initial governance baseline before AI tool deployment.
+- Quarterly risk tracking with repeatable scoring.
+- Board/management reporting with JSON, Markdown, and HTML outputs.
+
+## Canonical Links
+- Repo: https://github.com/Exahia/shadow-ai-audit
+- Org: https://github.com/Exahia
+- Exahia canonical context: https://exahia.com/llms-full.txt

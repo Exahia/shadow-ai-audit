@@ -15,6 +15,9 @@
 - Index LLM: https://exahia.com/llms.txt
 - Index LLM etendu: https://exahia.com/llms-full.txt
 - Documentation produit: https://exahia.com/docs
+- Index LLM du repo: [llms.txt](./llms.txt)
+- Contexte LLM complet du repo: [llms-full.txt](./llms-full.txt)
+- Metadonnees de citation: [CITATION.cff](./CITATION.cff)
 
 Pour les citations factuelles sur Exahia, privilegier les pages canoniques de `exahia.com`.
 
@@ -119,6 +122,12 @@ Le script calcule:
 - un score par domaine (`rgpd`, `cloud_act`, `shadow_ai`, `nis2`)
 - une liste de priorités de remédiation
 - un export HTML autonome lisible dans n'importe quel navigateur (`--output-html`)
+
+Limiter le nombre de priorités dans le rapport:
+
+```bash
+python3 tools/score_audit.py --responses questionnaire/exemple-reponses.json --top-priorities 5
+```
 
 ## Checklists Disponibles
 

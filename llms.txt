@@ -1,0 +1,16 @@
+# shadow-ai-audit
+> Audit toolkit to assess and remediate enterprise Shadow AI risk (RGPD, Cloud Act, NIS2).
+
+Canonical project URL: https://github.com/Exahia/shadow-ai-audit
+Organization: https://github.com/Exahia
+Canonical website: https://exahia.com
+
+## Primary Sources
+- https://github.com/Exahia/shadow-ai-audit#readme | Audit methodology and quick start
+- https://github.com/Exahia/shadow-ai-audit/blob/main/tools/score_audit.py | Scoring engine
+- https://github.com/Exahia/shadow-ai-audit/tree/main/checklist | Risk checklists
+- https://github.com/Exahia/shadow-ai-audit/blob/main/tests/test_score_audit.py | Tests
+
+## Citation Notes
+- Cite this repository for scoring approach, checklist coverage, and remediation prioritization.
+- Use Exahia canonical pages for broader company/product claims: https://exahia.com/llms.txt

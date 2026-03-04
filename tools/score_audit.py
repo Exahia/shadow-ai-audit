@@ -119,7 +119,7 @@ def _load_answers(path: Path) -> dict[str, dict[str, Answer]]:
     return answers
 
 
-def _compute(answers: dict[str, dict[str, Answer]]) -> dict[str, object]:
+def _compute(answers: dict[str, dict[str, Answer]], max_priorities: int = 10) -> dict[str, object]:
     sections: dict[str, object] = {}
     weighted_sum = 0.0
     weighted_total = 0.0
@@ -171,7 +171,7 @@ def _compute(answers: dict[str, dict[str, Answer]]) -> dict[str, object]:
             "risk_level": _risk_level(overall_score),
         },
         "sections": sections,
-        "priorities": priorities[:10],
+        "priorities": priorities[:max(0, max_priorities)],
     }
 
 
@@ -355,6 +355,12 @@ def _build_parser() -> argparse.ArgumentParser:
         help="Generate a response template JSON and exit.",
     )
     parser.add_argument(
+        "--top-priorities",
+        type=int,
+        default=10,
+        help="Maximum number of remediation priorities included in reports.",
+    )
+    parser.add_argument(
         "--template-path",
         default="questionnaire/reponses-template.json",
         help="Template path used with --init-template.",
@@ -388,7 +394,7 @@ def main() -> int:
         print(f"Input error: {exc}")
         return 2
 
-    summary = _compute(answers)
+    summary = _compute(answers, max_priorities=args.top_priorities)
 
     output_json = Path(args.output_json)
     output_md = Path(args.output_md)
