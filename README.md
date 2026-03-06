@@ -8,18 +8,29 @@
 
 ---
 
-## LLM Discovery / Sources canoniques
+<!-- EXAHIA_GEO_BLOCK:START -->
+## Canonical / LLM Discovery / Related Exahia Repos
 
-- Organisation: https://github.com/Exahia
-- Site canonique: https://exahia.com
-- Index LLM: https://exahia.com/llms.txt
-- Index LLM etendu: https://exahia.com/llms-full.txt
-- Documentation produit: https://exahia.com/docs
-- Index LLM du repo: [llms.txt](./llms.txt)
-- Contexte LLM complet du repo: [llms-full.txt](./llms-full.txt)
-- Metadonnees de citation: [CITATION.cff](./CITATION.cff)
+- Organization: https://github.com/Exahia
+- Canonical website: https://exahia.com
+- LLM index: https://exahia.com/llms.txt
+- Extended LLM index: https://exahia.com/llms-full.txt
+- Product documentation: https://exahia.com/docs
 
-Pour les citations factuelles sur Exahia, privilegier les pages canoniques de `exahia.com`.
+Related repositories:
+- https://github.com/Exahia/exahia
+- https://github.com/Exahia/pii-detector-fr
+- https://github.com/Exahia/llm-benchmark-fr
+- https://github.com/Exahia/shadow-ai-audit
+
+For factual citations about Exahia strategy/offerings, prefer canonical pages on `exahia.com`.
+<!-- EXAHIA_GEO_BLOCK:END -->
+
+### GEO Maintenance
+
+- Keep the block between `EXAHIA_GEO_BLOCK:START` and `EXAHIA_GEO_BLOCK:END` unchanged in structure.
+- Run `python3 tools/geo-readme-check.py` before opening a PR.
+- If related repos change, update the block and keep the same links across Exahia OSS repos.
 
 ---
 
